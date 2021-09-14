@@ -1,0 +1,406 @@
+-----------------------------------------------------
+User API: Login
+-----------------------------------------------------
+URI: http://localhost:8080/blog-user/login
+Method: GET
+Header Variables: username [String] & password [String]
+Produces: application/json
+Request Headers:
+{
+	"username": "lweyrich",
+	"password": "password"
+}
+Response Object: LoggedInUser
+Response: 
+{
+    "responseCode": 200,
+    "responseMessage": "[200] Successfully Logged in.",
+    "user": {
+        "userId": 2,
+        "firstName": "Louis",
+        "lastName": "Weyrich",
+        "userName": "lweyrich",
+        "userPassword": null,
+        "userEmail": "louisweyrich@gmail.com",
+        "isAdmin": true,
+        "active": true,
+        "canComment": true
+    },
+    "date": "2021-02-21T23:27:19.088+00:00"
+}
+
+-----------------------------------------------------
+Blog API
+-----------------------------------------------------
+             
+             All Active Published Blogs 
+_____________________________________________________
+URI: http://localhost:8080/blog/all
+Method: GET
+Produces: application/json
+Request Params: None
+Response Object: SimpleBlogModel
+Response: 
+[
+    {
+        "blogId": 1,
+        "user": {
+            "userId": 2,
+            "firstName": "Louis",
+            "lastName": "Weyrich",
+            "userName": "lweyrich",
+            "userPassword": null,
+            "userEmail": "louisweyrich@gmail.com",
+            "isAdmin": true,
+            "active": true,
+            "canComment": true
+        },
+        "title": "First Blog",
+        "createdDatetime": "2021-02-10T00:49:57.123+00:00",
+        "editedDatetime": null,
+        "publishedDatetime": null,
+        "likes": 9,
+        "dislikes": 3,
+        "rating": 0,
+        "active": true,
+        "status": "PUBLISHED",
+        "visibility": "PUBLIC",
+        "categoryList": [
+            {
+                "categoryId": 1,
+                "blogId": 1,
+                "text": "First"
+            },
+            {
+                "categoryId": 2,
+                "blogId": 1,
+                "text": "Blogging"
+            },
+            {
+                "categoryId": 3,
+                "blogId": 1,
+                "text": "Published"
+            }
+        ]
+    }
+]
+
+-----------------------------------------------------             
+       All Active Published Blogs by username
+_____________________________________________________
+URI: http://localhost:8080/blog/list/by-user/{username}
+Method: GET
+Produces: application/json
+Request Params: None
+Response Object: SimpleBlogModel
+Response: 
+[
+    {
+        "blogId": 1,
+        "user": {
+            "userId": 2,
+            "firstName": "Louis",
+            "lastName": "Weyrich",
+            "userName": "lweyrich",
+            "userPassword": null,
+            "userEmail": "louisweyrich@gmail.com",
+            "isAdmin": true,
+            "active": true,
+            "canComment": true
+        },
+        "title": "First Blog",
+        "createdDatetime": "2021-02-10T00:49:57.123+00:00",
+        "editedDatetime": null,
+        "publishedDatetime": null,
+        "likes": 9,
+        "dislikes": 3,
+        "rating": 0,
+        "active": true,
+        "status": "PUBLISHED",
+        "visibility": "PUBLIC",
+        "categoryList": [
+            {
+                "categoryId": 1,
+                "blogId": 1,
+                "text": "First"
+            },
+            {
+                "categoryId": 2,
+                "blogId": 1,
+                "text": "Blogging"
+            },
+            {
+                "categoryId": 3,
+                "blogId": 1,
+                "text": "Published"
+            }
+        ]
+    }
+]
+
+-----------------------------------------------------             
+       All Blogs by user id
+_____________________________________________________
+URI: http://localhost:8080/blog/list-all/by-user/{userid}
+Method: GET
+Produces: application/json
+Request Params: None
+Response Object: SimpleBlogModel
+Response: 
+[
+    {
+        "blogId": 1,
+        "user": {
+            "userId": 2,
+            "firstName": "Louis",
+            "lastName": "Weyrich",
+            "userName": "lweyrich",
+            "userPassword": null,
+            "userEmail": "louisweyrich@gmail.com",
+            "isAdmin": true,
+            "active": true,
+            "canComment": true
+        },
+        "title": "First Blog",
+        "createdDatetime": "2021-02-10T00:49:57.123+00:00",
+        "editedDatetime": null,
+        "publishedDatetime": null,
+        "likes": 9,
+        "dislikes": 3,
+        "rating": 0,
+        "active": true,
+        "status": "PUBLISHED",
+        "visibility": "PUBLIC",
+        "categoryList": [
+            {
+                "categoryId": 1,
+                "blogId": 1,
+                "text": "First"
+            },
+            {
+                "categoryId": 2,
+                "blogId": 1,
+                "text": "Blogging"
+            },
+            {
+                "categoryId": 3,
+                "blogId": 1,
+                "text": "Published"
+            }
+        ]
+    }
+]
+
+
+-----------------------------------------------------             
+       Get Blog by id
+_____________________________________________________
+URI: http://localhost:8080/blog/id/{blogid}
+Method: GET
+Produces: application/json
+Request Params: None
+Response Object: BlogModel
+Response: 
+{
+    "blogId": 2,
+    "user": {
+        "userId": 2,
+        "firstName": "Louis",
+        "lastName": "Weyrich",
+        "userName": "lweyrich",
+        "userPassword": null,
+        "userEmail": "louisweyrich@gmail.com",
+        "isAdmin": true,
+        "active": true,
+        "canComment": true
+    },
+    "title": "Second Blog",
+    "createdDatetime": "2021-02-10T00:49:57.123+00:00",
+    "editedDatetime": null,
+    "publishedDatetime": null,
+    "text": "This is my Second blog.",
+    "likes": 6,
+    "dislikes": 2,
+    "rating": 0,
+    "active": true,
+    "commentSecurity": 7,
+    "status": "PUBLISHED",
+    "visibility": "PUBLIC",
+    "commentList": [
+        {
+            "commentId": 4,
+            "blogId": 2,
+            "commentTitle": "Write more",
+            "commentText": "I love this.  Write some more",
+            "commentUser": null,
+            "commentsList": [],
+            "likes": 0,
+            "dislikes": 0,
+            "rating": 0,
+            "active": true,
+            "createdDate": "2021-02-10T13:30:16.342+00:00"
+        },
+        {
+            "commentId": 5,
+            "blogId": 2,
+            "commentTitle": "Next Blog",
+            "commentText": "Go read the next blog!",
+            "commentUser": null,
+            "commentsList": [],
+            "likes": 0,
+            "dislikes": 0,
+            "rating": 0,
+            "active": true,
+            "createdDate": "2021-02-10T13:30:16.342+00:00"
+        }
+    ],
+    "categoryList": [
+        {
+            "categoryId": 4,
+            "blogId": 2,
+            "text": "Second"
+        },
+        {
+            "categoryId": 5,
+            "blogId": 2,
+            "text": "Dogman"
+        },
+        {
+            "categoryId": 6,
+            "blogId": 2,
+            "text": "Published"
+        }
+    ]
+}
+
+-----------------------------------------------------             
+       Create New Blog
+_____________________________________________________
+URI: http://localhost:8080/blog/create
+Method: POST
+Produces: text/plain
+Consumes: application/json
+Response Object: Integer
+Response: #
+Request Objet: BlogComposite
+Request Body:
+{
+	"blog": 
+	{
+	    "blogId": null,
+	    "user": {
+	        "userId": 2,
+	        "firstName": "Louis",
+	        "lastName": "Weyrich",
+	        "userName": "lweyrich",
+	        "userPassword": null,
+	        "userEmail": "louisweyrich@gmail.com",
+	        "isAdmin": true,
+	        "active": true,
+	        "canComment": true
+	    },
+	    "title": "Blog Title",
+	    "createdDatetime": "2021-02-10T00:49:57.123+00:00",
+	    "editedDatetime": null,
+	    "publishedDatetime": null,
+	    "likes": 0,
+	    "dislikes": 0,
+	    "rating": 0,
+	    "active": true,
+	    "status": "CREATED",
+	    "visibility": "PUBLIC",
+	    
+	},
+	"categoryList": 
+	[
+        {
+             "text": "First"
+        },
+        {
+            "text": "Blogging"
+        },
+        {
+            "text": "Published"
+        }
+    ]
+}
+
+-----------------------------------------------------             
+       Like Blog by id
+_____________________________________________________
+URI: http://localhost:8080/blog/like/{blogid}
+Method: PUT
+Produces: text/plain
+Request Params: None
+Response Object: Integer
+Response: # the count of likes for the blog
+
+-----------------------------------------------------             
+       Dislike Blog by id
+_____________________________________________________
+URI: http://localhost:8080/blog/dislike/{blogid}
+Method: PUT
+Produces: text/plain
+Request Params: None
+Response Object: Integer
+Response: # the count of dislikes for the blog
+
+
+-----------------------------------------------------             
+       Update Blog Active
+_____________________________________________________
+URI: http://localhost:8080/blog/update/active/{blogId}
+Method: PUT
+Produces: application/json
+Request Body: 
+{
+	"active": "true"
+}
+Response Object: Void
+Response: None
+
+
+-----------------------------------------------------             
+       Update Blog Status
+_____________________________________________________
+URI: http://localhost:8080/blog/update/status/{blogId}
+Method: PUT
+Produces: application/json
+Request Object: Status
+Request Body: 
+{
+	"status": "PUBLISHED"
+}
+Response Object: Void
+Response: None
+
+
+-----------------------------------------------------             
+       Update Blog Visibility
+_____________________________________________________
+URI: http://localhost:8080/blog/update/visibility/{blogId}
+Method: PUT
+Produces: application/json
+Request Object: Visibility
+Request Body: 
+{
+	"visibility": "PUBLIC"
+}
+Response Object: Void
+Response: None
+
+
+-----------------------------------------------------             
+       Blog Category Remove
+_____________________________________________________
+URI: http://localhost:8080/blog/category/remove
+Method: PATCH
+Header Variables: categoryId [Long]
+Produces: None
+Request Object: Long
+Request Body: 
+{
+	"categoryId": Long
+}
+Response Object: Void
+Response: None
