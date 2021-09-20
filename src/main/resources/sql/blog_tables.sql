@@ -44,7 +44,7 @@ CREATE INDEX ndx_title ON blog(blog_title);
 
 DROP TABLE IF EXISTS blog_like;
 
-CREATE TABLE EXISTS blog_like(
+CREATE TABLE blog_like(
 	blog_id INT NOT NULL,
 	user_name INT NOT NULL,
 	FOREIGN KEY(blog_id) REFERENCES blog(blog_id),
@@ -58,7 +58,6 @@ CREATE TABLE blog_category(
 	category_id IDENTITY,
 	blog_id INT NOT NULL,
 	category_text varchar(60) NOT NULL,
-	INDEX USING BTREE (category_text) ENGINE = MyISAM,
 	FOREIGN KEY(blog_id) REFERENCES blog(blog_id),
 	PRIMARY KEY(category_id)
 );
