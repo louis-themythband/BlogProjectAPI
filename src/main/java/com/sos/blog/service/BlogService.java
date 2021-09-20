@@ -165,7 +165,7 @@ public class BlogService {
 	@Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.READ_COMMITTED)
 	public Integer increaseLike(Long blogId)
 	{
-		SimpleBlog blog = simpleBlogRepository.getOne(blogId);
+		SimpleBlog blog = simpleBlogRepository.getById(blogId);
 		Integer likes = blog.getLikes();
 		likes += 1;
 		blog.setLikes(likes);
@@ -177,7 +177,7 @@ public class BlogService {
 	@Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.READ_COMMITTED)
 	public Integer increaseDislike(Long blogId)
 	{
-		SimpleBlog blog = simpleBlogRepository.getOne(blogId);
+		SimpleBlog blog = simpleBlogRepository.getById(blogId);
 		Integer dislikes = blog.getDislikes();
 		dislikes += 1;
 		blog.setDislikes(dislikes);

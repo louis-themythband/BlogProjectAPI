@@ -36,7 +36,7 @@ public class CommentService {
 	 */
 	public List<CommentModel> createNewComment(Comment comment)
 	{
-		BlogUser user = this.userRepository.getOne(comment.getCommentUser().getUserId());
+		BlogUser user = this.userRepository.getById(comment.getCommentUser().getUserId());
 		comment.setCommentUser(user);
 		comment = this.commentRepository.saveAndFlush(comment);
 		
